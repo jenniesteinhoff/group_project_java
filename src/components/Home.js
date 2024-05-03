@@ -9,7 +9,7 @@ const Home = () => {
             <h1>Home</h1>
             <h3>Test</h3>
             <div className="menuOptions">
-                <ReUsableButton>Start</ReUsableButton>
+                <ReUsableButton>Start game</ReUsableButton>
                 <ReUsableButton>Credits</ReUsableButton>
                 <ReUsableButton>Quit</ReUsableButton>                
             </div>
