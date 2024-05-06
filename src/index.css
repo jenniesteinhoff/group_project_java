@@ -13,9 +13,12 @@ body {
 }
 
 .container, .menuOptions {
-  margin: 2rem;
   display: flex;
   align-items: center;
+}
+
+.container, .menuOptions {
+  margin: 2rem;
   flex-direction: column;
 }
 
@@ -25,6 +28,40 @@ body {
 
 .menuOptions {
   justify-content: space-between;
+}
+
+.lvlStructure {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 570px;
+}
+
+.cell {
+  &.bomb {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+  &.one, &.two, &.three {
+    grid-row: 1 / 2;
+  }
+  &.four, &.five, &.six {
+    grid-row: 2 / 3;
+  }
+  &.seven, &.eight, &.nine {
+    grid-row: 3 / 4;
+  }
+  &.one, &.four, &.seven {
+    grid-column: 1 / 2;
+  }
+  &.two, &.five, &.eight {
+    grid-column: 2 / 3;
+  }
+  &.three, &.six, &.nine{
+    grid-column: 3 / 4;
+  }
 }
 
 p {
@@ -53,10 +90,14 @@ footer {
   height: 5rem;
   margin: 2rem;
 }
+.Bomb {
+  z-index: 2;
+}
 
 .reuse-btn {
-  min-width: 280px;
-  min-height: 90px;
+  z-index: 1;
+  min-width: 150px;
+  min-height: 150px;
   margin: 20px;
   border-radius: 20px;
   border: 0px;
@@ -71,14 +112,15 @@ footer {
 }
 
 .reuse-btn:hover {
-  min-width: 285px;
-  min-height: 100px;
   transition: 0.5s;
 }
 .reuse-btn:active {
   border-bottom-color: #a23d91;
   background: linear-gradient(180deg, #d3c375 0%, #d76dc6 100%);
+}
+.reuse-btn:active, .reuse-bomb:active {
   transform: translateY(2px);
+  transition: 0.3s;
 }
 
 .name {

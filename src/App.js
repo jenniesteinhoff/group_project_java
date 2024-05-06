@@ -1,9 +1,9 @@
-import Home from "./components/Home";
+import Level from "./components/Level";
 
 function App() {
   return (
     <div className="container">
-      <Home/>
+      <Level/>
     </div>
   );
 }
