@@ -1,5 +1,6 @@
 import ReusableButton from "./ReusableButton"; 
 import Message from "./Message";
+import "./Home.css"; 
 
 const Home =() => {
   const handleStartGame = () => {   //HandlestartGame logic is added here, was sourced from YT.
@@ -21,6 +22,7 @@ return(
     //Creating a simple container for now, will be styled later. 
     <div className="container">
     <h1>Welcome to the Minesweeper game</h1>
+    <div className="box">
     <div className="row">
            <ReusableButton label="Start the game" onClick={handleStartGame} />
     </div>
@@ -30,6 +32,7 @@ return(
     <div className="row">
          <ReusableButton label="Exit" onClick={handleExit} />
     </div>
+  </div>
   </div>
 );
 };
