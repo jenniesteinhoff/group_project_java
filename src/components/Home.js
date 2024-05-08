@@ -1,6 +1,7 @@
 import ReusableButton from "./ReusableButton"; 
 import Message from "./Message";
 import "./Home.css"; 
+import ExitButton from "./ExitButton"
 
 const Home =() => {
   const handleStartGame = () => {   //HandlestartGame logic is added here, was sourced from YT.
@@ -9,8 +10,11 @@ const Home =() => {
   };
 
   const handleExit = () => {
-    // Need to add exit logic here
-    console.log("Exiting game...");
+       const confirmExit = window.confirm('Thank you for playing! Are you sure you want to exit the game?');
+     if (confirmExit) {
+    // For now, just using alert to display. Will edit later if we learn something more. 
+    window.close();
+    }
   };
 
   const handleRules = () => {
@@ -30,14 +34,14 @@ return(
           <ReusableButton label="Rules" onClick={handleRules} />
     </div>
     <div className="row">
-         <ReusableButton label="Exit" onClick={handleExit} />
+    <ExitButton handleExit={handleExit} /> 
     </div>
   </div>
   </div>
 );
 };
 
-        
+  
 
 
 export default Home;
