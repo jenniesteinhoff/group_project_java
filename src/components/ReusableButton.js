@@ -1,10 +1,6 @@
-const ReUsableButton = ({children}) => {
+const ReUsableButton = ({onClick, label}) => {
     return (
-
-    <button className="reuse-btn">
-    {children}
-    </button>
-
+        <button className="reuse-btn" onClick={onClick}>{label}</button>
     );
 };
 

@@ -14,19 +14,20 @@ body {
 
 .container, .menuOptions {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .container, .menuOptions {
   margin: 2rem;
-  flex-direction: column;
 }
 
 .container {
+  flex-direction: row;
   justify-content: center;
 }
 
 .menuOptions {
+  flex-direction: column;
   justify-content: space-between;
 }
 
@@ -34,33 +35,45 @@ body {
   display: grid;
   justify-items: center;
   align-items: center;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  width: 570px;
+  grid-gap: 25px;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  width: min-content;
+}
+
+.game_score {
+  grid-column: 5 / 6;
+  grid-row: 1 / 2; 
+}
+.game_exit {
+  grid-column: 1 / 2;
+  grid-row: 5 / 6; 
 }
 
 .cell {
+
   &.bomb {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-  }
-  &.one, &.two, &.three {
-    grid-row: 1 / 2;
-  }
-  &.four, &.five, &.six {
+    grid-column: 2 / 3;
     grid-row: 2 / 3;
   }
-  &.seven, &.eight, &.nine {
+
+  &.one, &.two, &.three {
+    grid-row: 2 / 3;
+  }
+  &.four, &.five, &.six {
     grid-row: 3 / 4;
   }
-  &.one, &.four, &.seven {
-    grid-column: 1 / 2;
+  &.seven, &.eight, &.nine {
+    grid-row: 4 / 5;
   }
-  &.two, &.five, &.eight {
+  &.one, &.four, &.seven {
     grid-column: 2 / 3;
   }
-  &.three, &.six, &.nine{
+  &.two, &.five, &.eight {
     grid-column: 3 / 4;
+  }
+  &.three, &.six, &.nine{
+    grid-column: 4 / 5;
   }
 }
 
@@ -68,20 +81,6 @@ p {
   margin: 2rem;
 }
 
-button {
-  padding: 0.7rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  background-color: black;
-  color: white;
-  outline: none;
-  border-radius: 5px;
-}
-
-button:hover {
-  background-color: white;
-  color: black;
-}
 
 footer {
   background-color: gray;
@@ -94,11 +93,7 @@ footer {
   z-index: 2;
 }
 
-.reuse-btn {
-  z-index: 1;
-  min-width: 150px;
-  min-height: 150px;
-  margin: 20px;
+.reuse-btn, .reuse-cell {
   border-radius: 20px;
   border: 0px;
   font-family: "Happy Monkey", system-ui;  
@@ -107,18 +102,36 @@ footer {
   box-shadow: 0px 0px 0px 3px #000;
   font-size: 28px;
   color: white;
-  outline: none;
+  outline: none; 
+}
+
+.reuse-btn {
+  min-width: 420px;
+  min-height: 100px;
   
+}
+.reuse-cell {
+  min-width: 150px;
+  min-height: 150px;
 }
 
 .reuse-btn:hover {
   transition: 0.5s;
 }
-.reuse-btn:active {
+.reuse-cell:hover {
+  transition: 0.5s;
+}
+.reuse-btn:hover, .reuse-cell:hover, .reuse-bomb:hover {
+  transform: translateY(-4px);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.30));
+  transition: 0.5s;
+}
+
+.reuse-btn:active, .reuse-cell:active {
   border-bottom-color: #a23d91;
   background: linear-gradient(180deg, #d3c375 0%, #d76dc6 100%);
 }
-.reuse-btn:active, .reuse-bomb:active {
+.reuse-btn:active, .reuse-cell:active, .reuse-bomb:active {
   transform: translateY(2px);
   transition: 0.3s;
 }
