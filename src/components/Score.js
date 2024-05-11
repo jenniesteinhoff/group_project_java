@@ -1,8 +1,12 @@
-const ReUsableRibbon = (label) => {
+import React, { useState } from "react";
 
+
+const ScoreRibbon = () => {
+    
+    const [gameScore, setGameScore] = useState(0);
     return (
         
-    <svg className="reuse-ribbon" xmlns="http://www.w3.org/2000/svg" width="326" height="122" viewBox="0 0 326 122" fill="none">
+    <svg className="score-ribbon" xmlns="http://www.w3.org/2000/svg" width="326" height="122" viewBox="0 0 326 122" fill="none">
 
         <g filter="url(#filter0_d_23_71)">
         <path d="M57.036 96.0443C57.036 96.0443 60.1798 72.4107 59.0374 53.7694C59.0374 53.7694 52.0326 56.5879 39.0236 56.5879C26.0146 56.5879 10.0035 50.9512 10.0035 50.9512C10.0035 50.9512 19.1603 69.2772 27.0152 76.3161C34.8702 83.3551 42.0256 87.5894 42.0256 87.5894C42.0256 87.5894 36.5255 93.2826 27.0152 98.8627C15.0069 105.908 5 107.318 5 107.318C5 107.318 30.253 120 52.0326 120C81.0527 120 94.0617 112.954 99.0652 105.908C104.069 98.8625 101.067 94.6352 101.067 94.6352C101.067 94.6352 96.0631 92.118 85.0554 94.6352C81.3437 95.484 77.8168 97.4351 74.8542 99.074C72.4963 100.378 70.496 101.485 69.0444 101.681C59.319 102.993 57.036 96.0443 57.036 96.0443Z" fill="#EED75D"/>
@@ -27,9 +31,10 @@ const ReUsableRibbon = (label) => {
             <stop offset="1" stopColor="#FFEF9B"/>
         </linearGradient>
         </defs>
-        <text x="35%" y ="50%" className="ribbon-font" fill="#000000">{label}</text>
+        <text x="35%" y ="50%" className="ribbon-font" fill="#000000">Score: {gameScore}</text>
     </svg>
     );
     };
     
-    export default ReUsableRibbon;
+    export default ScoreRibbon;
+
