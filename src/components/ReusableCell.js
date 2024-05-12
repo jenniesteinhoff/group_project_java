@@ -1,6 +1,6 @@
-const ReUsableCell = ({onClick, label}) => {
+const ReUsableCell = ({label}) => {
     return (
-        <button className="reuse-cell" onClick={onClick}>{label}</button>
+        <button className="reuse-cell">{label}</button>
     );
 };
 
