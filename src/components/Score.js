@@ -31,7 +31,7 @@ const ScoreRibbon = () => {
             <stop offset="1" stopColor="#FFEF9B"/>
         </linearGradient>
         </defs>
-        <text x="35%" y ="50%" className="ribbon-font" fill="#000000">Score: {gameScore}</text>
+        <text className="ribbon-font" fill="#000000">Score: <tspan>{gameScore}</tspan></text>
     </svg>
     );
     };
