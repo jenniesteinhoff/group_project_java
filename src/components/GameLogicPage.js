@@ -7,6 +7,11 @@ const GameLogicPage = () => {
   const [box1Color, setBox1Color] = useState("white"); //initializing state variables for color changing
   const [box3Color, setBox3Color] = useState("white");//initializing state variables for color changing
   const [box4Color, setBox4Color] = useState("white");//initializing state variables for color changing
+  const [box5Color, setBox5Color] = useState("white");
+  const [box6Color, setBox6Color] = useState("white");
+  const [box7Color, setBox7Color] = useState("white");
+  const [box8Color, setBox8Color] = useState("white");
+  const [box9Color, setBox9Color] = useState("white");
   const [gameOver, setGameOver] = useState(false);//initialising boolean gameover state variable, 
                                                   //this will ideally be indicating if the game is over or not. 
                                                   //We will start with game is not over first. ie gameover (false)
@@ -42,6 +47,36 @@ const GameLogicPage = () => {
           setBox4Color("green");
       }
   };
+  const handleBox5Click = () => {
+    if (!gameOver) {
+        setBox5Color("green");
+    }
+};
+
+const handleBox6Click = () => {
+  if (!gameOver) {
+      setBox6Color("green");
+  }
+};
+
+const handleBox7Click = () => {
+  if (!gameOver) {
+      setBox7Color("green");
+  }
+};
+
+const handleBox8Click = () => {
+  if (!gameOver) {
+      setBox8Color("green");
+  }
+};
+
+const handleBox9Click = () => {
+  if (!gameOver) {
+      setBox9Color("green");
+  }
+};
+
 
   //Below, inside the return, all the rendering happens. In box 2, when the gameover is true,  
   //it will show an image and Game over text.
@@ -69,6 +104,21 @@ const GameLogicPage = () => {
 
           <div className="box" style={{ backgroundColor: box4Color }} onClick={handleBox4Click}>
               Box 4
+          </div>
+           <div className="box" style={{ backgroundColor: box5Color }} onClick={handleBox5Click}>
+              Box 5
+          </div>
+          <div className="box" style={{ backgroundColor: box6Color }} onClick={handleBox6Click}>
+              Box 6
+          </div>
+          <div className="box" style={{ backgroundColor: box7Color }} onClick={handleBox7Click}>
+              Box 7
+          </div>
+          <div className="box" style={{ backgroundColor: box8Color }} onClick={handleBox8Click}>
+              Box 8
+          </div>
+          <div className="box" style={{ backgroundColor: box9Color }} onClick={handleBox9Click}>
+              Box 9
           </div>
       </div>
   );
