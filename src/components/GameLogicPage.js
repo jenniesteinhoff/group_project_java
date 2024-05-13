@@ -4,6 +4,11 @@ import exampleImage from "../Assets/image.png"
 
 
 const GameLogicPage = () => {
+  const handleGoBack = () => {
+    window.history.back(); // Navigate to the previous page
+   
+  };
+
   const [box1Color, setBox1Color] = useState("white"); //initializing state variables for color changing
   const [box3Color, setBox3Color] = useState("white");//initializing state variables for color changing
   const [box4Color, setBox4Color] = useState("white");//initializing state variables for color changing
@@ -82,45 +87,52 @@ const handleBox9Click = () => {
   //it will show an image and Game over text.
 
   return (
-      <div className="container">
-          <div className="box" style={{ backgroundColor: box1Color }} onClick={handleBox1Click}>
+      <div className="gamecontainer">
+         <div className="row">
+          <div className="cell" style={{ backgroundColor: box1Color }} onClick={handleBox1Click}>
               Box 1
           </div> 
-
-          <div className="box" onClick={handleBox2Click}>
+          <div className="cell" onClick={handleBox2Click}>
               Box 2
           </div>
+          <div className="cell" style={{ backgroundColor: box3Color }} onClick={handleBox3Click}>
+              Box 3
+          </div>
+          </div>
 
+          <div className="row">
+          <div className="cell" style={{ backgroundColor: box4Color }} onClick={handleBox4Click}>
+              Box 4
+          </div>
+           <div className="cell" style={{ backgroundColor: box5Color }} onClick={handleBox5Click}>
+              Box 5
+          </div>
+          <div className="cell" style={{ backgroundColor: box6Color }} onClick={handleBox6Click}>
+              Box 6
+          </div>
+          </div>
+
+          <div className="row">
+          <div className="cell" style={{ backgroundColor: box7Color }} onClick={handleBox7Click}>
+              Box 7
+          </div>
+          <div className="cell" style={{ backgroundColor: box8Color }} onClick={handleBox8Click}>
+              Box 8
+          </div>
+          <div className="cell" style={{ backgroundColor: box9Color }} onClick={handleBox9Click}>
+              Box 9
+          </div>
+          </div>
+          
           {gameOver && (
               <>
                   <img src={exampleImage} alt="Bomb exploding" />
                   <p>Game over!</p>
               </>
           )}
-
-          <div className="box" style={{ backgroundColor: box3Color }} onClick={handleBox3Click}>
-              Box 3
-          </div>
-
-          <div className="box" style={{ backgroundColor: box4Color }} onClick={handleBox4Click}>
-              Box 4
-          </div>
-           <div className="box" style={{ backgroundColor: box5Color }} onClick={handleBox5Click}>
-              Box 5
-          </div>
-          <div className="box" style={{ backgroundColor: box6Color }} onClick={handleBox6Click}>
-              Box 6
-          </div>
-          <div className="box" style={{ backgroundColor: box7Color }} onClick={handleBox7Click}>
-              Box 7
-          </div>
-          <div className="box" style={{ backgroundColor: box8Color }} onClick={handleBox8Click}>
-              Box 8
-          </div>
-          <div className="box" style={{ backgroundColor: box9Color }} onClick={handleBox9Click}>
-              Box 9
-          </div>
+  <button onClick={handleGoBack}>Go back!</button>
       </div>
+      
   );
 };
 
