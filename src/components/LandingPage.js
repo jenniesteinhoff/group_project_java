@@ -6,8 +6,8 @@ import "./LandingPage.css"
 
 const LandingPage =() => {
   const handleStartGame = () => {   //HandlestartGame logic is added here, was sourced from YT.
-    // The function is passed on to onClick prop in the below.  
-        alert("Game started!");// Add the game logic here but for now an alert is added for testing. 
+    window.location.href="/GameLogicPage";      
+      alert("Game started!");// Add the game logic here but for now an alert is added for testing. 
   };
 
   const handleExit = () => {

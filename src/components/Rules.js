@@ -1,5 +1,4 @@
 import "./Rules.css"
-import ExitButton from "./ExitButton";
 
 
 const Rules = () => {

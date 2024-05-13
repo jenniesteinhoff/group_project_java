@@ -14,8 +14,9 @@ function App(){
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/rules" element={<Rules />} />
+          <Route path="/GameLogicPage" element={<GameLogicPage />} />
         </Routes>
-        <GameLogicPage></GameLogicPage>
+    
       </div>
     </BrowserRouter>
    
