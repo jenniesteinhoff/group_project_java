@@ -1,6 +1,6 @@
-const ExitButton = ({ handleExit }) => {
+const ExitButton = () => {
     return (
-      <button onClick={handleExit}>Exit Game</button>
+      <div><h2>Thank you for playing! You can now close the window.</h2></div>
     );
   }
   

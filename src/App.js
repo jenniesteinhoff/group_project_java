@@ -14,6 +14,8 @@ function App(){
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/rules" element={<Rules />} />
+          <Route path="/ExitButton" element={<ExitButton />} />
+
           <Route path="/GameLogicPage" element={<GameLogicPage />} />
         </Routes>
     

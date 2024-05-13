@@ -11,12 +11,10 @@ const LandingPage =() => {
   };
 
   const handleExit = () => {
-       const confirmExit = window.confirm('Thank you for playing! Are you sure you want to exit the game?');
-     if (confirmExit) {
-    // For now, just using alert to display. Will edit later if we learn something more. 
-    window.close();
+    window.location.href="/ExitButton";
+    console.log("close");
     }
-  };
+  
 
   const handleRules = () => {
   window.location.href="/rules";
@@ -34,14 +32,14 @@ return(
     </div>
        
             <div className="row">
-              {/* Use handleRules function to navigate to the rules page */}
               <ReusableButton label="Rules" onClick={handleRules} />
             </div>
        
 
    
     <div className="row">
-    <ExitButton handleExit={handleExit} /> </div>
+    <ReusableButton label="Exit" onClick={handleExit} />
+    </div>
         </nav>
   
   </div>
