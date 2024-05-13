@@ -11,9 +11,10 @@
 .container {
     margin: 0 auto;
     padding: 20px;
-    max-width: 600px;
+    max-width: 500px;
     font-family: "Pixelify Sans", sans-serif;
-}
+    margin-top: 50px;
+   }
   
   h1 {
     font-size: 28px;
@@ -25,7 +26,7 @@
     border: 2px solid #000;
     border-radius: 20px;
     padding: 10px;
-    margin-top: 20px;
+    margin: 10px;
     display: flex; /* Enable Flexbox */
     flex-direction: column; /* Arrange items vertically */
     justify-content: center; /* Center items vertically */

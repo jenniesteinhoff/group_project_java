@@ -1,4 +1,5 @@
-import Home from "./components/Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import LandingPage from "./components/LandingPage";
 import Message from "./components/Message";
 import ReusableButton from "./components/ReusableButton";
 import Rules from "./components/Rules";
@@ -8,14 +9,17 @@ import exampleImage from "../src/Assets/image.png"
 
 function App(){
   return(
-    <div className="container">
-   <Message></Message>
-   <Home></Home>
-   <exampleImage></exampleImage>
-   <GameLogicPage></GameLogicPage>
-   <Rules></Rules>
+    <BrowserRouter>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/rules" element={<Rules />} />
+        </Routes>
+        <GameLogicPage></GameLogicPage>
+      </div>
+    </BrowserRouter>
    
-    </div>
+   
   );
 }
 export default App;

@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import ReusableButton from "./ReusableButton"; 
 import Message from "./Message";
-import "./Home.css"; 
 import ExitButton from "./ExitButton"
+import "./LandingPage.css"
 
-const Home =() => {
+const LandingPage =() => {
   const handleStartGame = () => {   //HandlestartGame logic is added here, was sourced from YT.
     // The function is passed on to onClick prop in the below.  
         alert("Game started!");// Add the game logic here but for now an alert is added for testing. 
@@ -18,8 +19,7 @@ const Home =() => {
   };
 
   const handleRules = () => {
-    // Need to add rules logic here
-    console.log("Viewing game rules...");
+  window.location.href="/rules";
   };
 
 return(
@@ -27,16 +27,25 @@ return(
     <div className="container">
     <h1>Welcome to the Minesweeper game</h1>
     <div className="box">
-    <div className="row">
+      <nav>
+               
+          <div className="row">
            <ReusableButton label="Start the game" onClick={handleStartGame} />
     </div>
+       
+            <div className="row">
+              {/* Use handleRules function to navigate to the rules page */}
+              <ReusableButton label="Rules" onClick={handleRules} />
+            </div>
+       
+
+   
     <div className="row">
-          <ReusableButton label="Rules" onClick={handleRules} />
-    </div>
-    <div className="row">
-    <ExitButton handleExit={handleExit} /> 
-    </div>
+    <ExitButton handleExit={handleExit} /> </div>
+        </nav>
+  
   </div>
+  
   </div>
 );
 };
@@ -44,4 +53,4 @@ return(
   
 
 
-export default Home;
+export default LandingPage;
