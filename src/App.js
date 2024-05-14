@@ -1,16 +1,25 @@
-import Home from "./components/Home";
-import UserName from "./components/UserName";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import LandingPage from "./components/LandingPage";
+import Message from "./components/Message";
 import ReusableButton from "./components/ReusableButton";
 import Rules from "./components/Rules";
-import ExitGame from "./components/ExitGame";
-import Level from "./components/Level";
+import ExitButton from "./components/ExitButton";
 
 function App(){
   return(
-    <div className="container">
-   <Level></Level>
+    <BrowserRouter>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/rules" element={<Rules />} />
+          <Route path="/ExitButton" element={<ExitButton />} />
+
+        </Routes>
+    
+      </div>
+    </BrowserRouter>
    
-    </div>
+   
   );
 }
 export default App;

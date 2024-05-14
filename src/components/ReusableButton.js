@@ -1,7 +1,5 @@
-const ReUsableButton = ({onClick, label}) => {
-    return (
-        <button className="reuse-btn" onClick={onClick}>{label}</button>
-    );
-};
-
-export default ReUsableButton;
+const ReusableButton = ({ label, onClick }) => {
+    return <button onClick={onClick}>{label}</button>;
+  };
+  
+  export default ReusableButton;
