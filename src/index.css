@@ -60,7 +60,7 @@ body {
     opacity: 0;
     transform: translateY(70px);
   }
-  60% {
+  50% {
     opacity: 0;
   }
   100% {
@@ -107,7 +107,7 @@ body {
     font-size: 30px;
   }
 
-  button {
+  .popup-btn {
     grid-row: 5 / 6; 
     width: 175px;
     height: 65px;
@@ -180,7 +180,6 @@ footer {
   margin: 2rem;
 }
   
-.reuse-cell:disabled { background-color: gray !important; cursor: not-allowed !important }
 
 .reuse-btn, .reuse-cell, .exit-btn, text.ribbon-font {
   color: #3c144a;
@@ -239,21 +238,60 @@ text.ribbon-font {
   min-height: 90px;
   
 }
+.reuse-cell:disabled {
+  border-bottom: 7px solid #C165B4;
+  background: linear-gradient(180deg, #fff7bb 0%, #ffbaf6 100%);
+  color: transparent;
+  text-shadow: none;
+  filter: none;
+  transition: 0s;
+}
 
-
-.reuse-cell:hover, .reuse-cell:active, .mine-cell:hover, .mine-cell:active, .pressed-reuse-cell:hover, .pressed-reuse-cell:active,
-svg.mine:hover, svg.mine:active, .exit-btn:hover, .exit-btn:active, text.ribbon-font:hover, .reuse-btn:hover, .reuse-btn:active {
+.reuse-btn:hover, .reuse-cell:hover, .mine-cell:hover, .pressed-reuse-cell:hover, 
+svg.mine:hover, .exit-btn:hover, text.ribbon-font:hover, .reuse-btn:hover, .popup-btn:hover {
   transition: 1.0s cubic-bezier(0, 0, 0.2, 1);
 }
 
+.reuse-btn:active, .reuse-cell:active, .mine-cell:active, .pressed-reuse-cell:active, 
+svg.mine:active, .exit-btn:active, .reuse-btn:active {
+  transition: 0.4s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.reuse-btn:focus, .reuse-cell:focus, .pressed-reuse-cell:focus, .mine-cell:focus, .exit-btn:focus, 
+.popup-btn:focus {
+  filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0));
+  transform: translateY(0px);
+  transition: 0.6s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.reuse-btn:focus, .reuse-cell:focus, .pressed-reuse-cell:focus, .mine-cell:focus {
+  border-bottom: 7px solid #C165B4;
+  background: linear-gradient(180deg, #fff7bb 0%, #ffbaf6 100%);
+}
+
+.reuse-cell:focus, .reuse-cell:active {
+  color: transparent;
+  text-shadow: none;
+  filter: none;
+}
+
+
+.popup-btn:hover {
+  background: #66aad9;
+  box-shadow: 0px 0px 12px 11px rgb(53 101 136 / 40%) inset;
+}
+
 .reuse-btn:hover, .reuse-cell:hover, .pressed-reuse-cell:hover, .exit-btn:hover, .mine-cell:hover {
-  transform: translateY(-4px);
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.30));
 }
 
-.reuse-btn:focus, .reuse-cell:focus, .pressed-reuse-cell:focus, .mine-cell:focus, .exit-btn:focus {
-  transform: translateY(3px);
-  filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0));
+.reuse-btn:active, .reuse-cell:active, .pressed-reuse-cell:active, .mine-cell:active, .exit-btn:active, .popup-btn:active {
+  transform: translateY(4px);
+}
+
+.reuse-btn:active, .reuse-cell:active, .pressed-reuse-cell:active, .mine-cell:active, .exit-btn:active, .exit-btn:focus {
+  border-bottom-color: #a23d91;
+  background: linear-gradient(180deg, #d3c375 0%, #d76dc6 100%);
 }
 text.ribbon-font:hover{
   font-size: 44px;
@@ -262,15 +300,6 @@ text.ribbon-font:hover{
   tspan {
     fill: rgba(255, 251, 205, 0.80);  
   }
-}
-.reuse-btn:active, .reuse-cell:active, .exit-btn:active, 
-.reuse-btn:focus, .reuse-cell:focus, .exit-btn:focus {
-  background: linear-gradient(180deg, #d3c375 0%, #d76dc6 100%);
-  border-bottom-color: #a23d91;
-  color: transparent;
-  text-shadow: none;
-  filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0));
-  transition: color 0s, text-shadow 0s, filter 0s;
 }
 .name {
   color: purple;

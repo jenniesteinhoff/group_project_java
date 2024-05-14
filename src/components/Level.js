@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import PressedReUsableCell from "./PressedReusableCell";
 import ReUsablePopup from "./ReusablePopup";
-import ReUsableCell from "./ReusableCell";
 import ScoreRibbon from "./Score";
 import ButtonExit from "./ExitLevel";
 import Mine from "./MineCell";
-
-
+import { isDisabled } from "@testing-library/user-event/dist/utils";
 
 const Level = () => {
 
     const [boxes, setBoxes] = useState([]);
     const [minePressed, setMinePressed] = useState([]);
+    const [count, setCount] = useState([]);
+    const [isClicked, setIsClicked] = useState([]);
 
     useEffect(() => {
         initiateGame();
@@ -24,6 +24,8 @@ const Level = () => {
         initialBoxes[mineIndex].mine = true;
         setBoxes(initialBoxes);
         setMinePressed(false);
+        setIsClicked(false)
+        setCount(0)
     };
 
 
@@ -31,19 +33,29 @@ const Level = () => {
         if (!minePressed) {
             const newBoxes = [...boxes];
             newBoxes[index].revealed = true;
-
+            
             setBoxes(newBoxes);
+
+            if (newBoxes[index].revealed) {
+                setIsClicked(true);
+            }
 
             if (newBoxes[index].mine) {
                 setMinePressed(true);
+                setCount(0)
             }
+
         }
+
+
     };
 
-    const resetGame = () => {
-        initiateGame();
+    const ReUsableCell = (number) => { 
+        return (
+            <button className="reuse-cell" disabled={isClicked} onClick={()=>setCount(count+1)}>?</button>
+            
+        );
     };
-
 
     const numberToWords = (number) => {
         const numbers = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
@@ -58,9 +70,9 @@ const Level = () => {
 
                 {boxes.map((box, index) => (
 
-                    <div key={index} className={'cell ' + numberToWords(index)} onClick={() => handleClick(index)} >
+                    <div key={index} className={'cell ' + numberToWords(index)} onClick={() => handleClick(index) & setIsClicked(index)} >
                         
-                        {(box.revealed && box.mine) ? (<Mine />) : <ReUsableCell label={"?"}/>}
+                        {(box.revealed && box.mine) ? (<Mine />) : <ReUsableCell/>}
                         {box.revealed ? box.mine ? '' : '' : ''}
                     </div>
 
@@ -68,12 +80,18 @@ const Level = () => {
             </div>
             
             
-            {minePressed ? <ReUsablePopup result={"You lose"} resultText={"Better luck next time!"}/> : ''}
+            {minePressed ? <ReUsablePopup result={"You lose"} resultText={"Better luck next time!"} reset={<button className="popup-btn one" 
+            onClick={() => initiateGame() }>Re-start</button>} menu={<button className="popup-btn two" onClick={() => initiateGame() }>Menu</button>}/> : ''}
+            
+            {count === 8 ? <ReUsablePopup result={"You win!"} resultText={"Do you want to try again?"} reset={<button className="popup-btn one" 
+            onClick={() => initiateGame() }>Re-start</button>} menu={<button className="popup-btn two" onClick={() => initiateGame() }>Menu</button>}/> : ''}
 
-            <div className="game_score"><ScoreRibbon className="score-ribbon" /></div>
-            <div className="game_exit"><ButtonExit className="btn-exit" label="Exit" onClick={() => resetGame()} /></div>
+            <div className="game_exit"><ButtonExit className="btn-exit" label="Exit" onClick={() => initiateGame() } /></div>
+
+            <div className="game_score"><ScoreRibbon className="score-ribbon" label={count} /></div>
         </div>
     );
+    
 };
 
 export default Level;
