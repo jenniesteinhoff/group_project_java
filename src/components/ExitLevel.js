@@ -1,7 +1,7 @@
-const ButtonExit = ({onClick, label}) => {
+const ButtonExitLevel = ({onClick, label}) => {
     return (
         <button className="exit-btn" onClick={onClick}>{label}</button>
     );
 };
 
-export default ButtonExit;
+export default ButtonExitLevel;
