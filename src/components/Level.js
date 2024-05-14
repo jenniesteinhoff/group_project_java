@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import PressedReUsableCell from "./PressedReusableCell";
 import ReUsablePopup from "./ReusablePopup";
 import ScoreRibbon from "./Score";
 import ButtonExit from "./ExitLevel";
@@ -15,6 +14,8 @@ const Level = () => {
 
     useEffect(() => {
         initiateGame();
+
+
     }, []);
 
     const initiateGame = () => {
@@ -33,7 +34,7 @@ const Level = () => {
         if (!minePressed) {
             const newBoxes = [...boxes];
             newBoxes[index].revealed = true;
-            
+
             setBoxes(newBoxes);
 
             if (newBoxes[index].revealed) {
@@ -42,13 +43,10 @@ const Level = () => {
 
             if (newBoxes[index].mine) {
                 setMinePressed(true);
-                setCount(0)
             }
-
         }
-
-
     };
+
 
     const ReUsableCell = (number) => { 
         return (
@@ -56,6 +54,7 @@ const Level = () => {
             
         );
     };
+
 
     const numberToWords = (number) => {
         const numbers = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
@@ -71,15 +70,14 @@ const Level = () => {
                 {boxes.map((box, index) => (
 
                     <div key={index} className={'cell ' + numberToWords(index)} onClick={() => handleClick(index) & setIsClicked(index)} >
-                        
+
                         {(box.revealed && box.mine) ? (<Mine />) : <ReUsableCell/>}
                         {box.revealed ? box.mine ? '' : '' : ''}
                     </div>
 
                 ))}
             </div>
-            
-            
+
             {minePressed ? <ReUsablePopup result={"You lose"} resultText={"Better luck next time!"} reset={<button className="popup-btn one" 
             onClick={() => initiateGame() }>Re-start</button>} menu={<button className="popup-btn two" onClick={() => initiateGame() }>Menu</button>}/> : ''}
             
