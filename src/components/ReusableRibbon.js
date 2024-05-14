@@ -1,3 +1,4 @@
+import ScoreBoard from "./scoreBoard";
 const ReUsableRibbon = (label) => {
 
     return (
