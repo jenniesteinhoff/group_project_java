@@ -1,7 +1,9 @@
+import Level from "./components/Level";
+
 function App() {
   return (
-    <div>
-      Test
+    <div className="container">
+      <Level/>
     </div>
   );
 }

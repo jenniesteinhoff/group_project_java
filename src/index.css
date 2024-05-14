@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 
 * {
   margin: 0;
@@ -7,37 +8,104 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  background: radial-gradient(50% 50% at 50% 50%, #FFFBE6 0%, #DAEDFF 100%) no-repeat;
+  font-family: "Happy Monkey", system-ui;
   font-size: 1.2rem;
   font-weight: 400;
 }
+text.ribbon-font {
+  overflow: visible;
+  transform: translate(115px, 63px);
+  font-family: "Lilita One", sans-serif;
+  text-transform: uppercase;
+  font-size: 40px;
+  color: #000;
+}
+
+.container, .menuOptions {
+  display: flex;
+  align-items: flex-start;
+  margin: 2rem;  
+}
+
 
 .container {
-  margin: 2rem;
-  display: flex;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
+
+}
+
+.menuOptions {
   flex-direction: column;
+  justify-content: space-between;
+}
+
+.lvlStructure {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  max-width: 1920px;
+  max-height: 1080px;
+}
+.gameBoard {
+  display: grid;
+  justify-items: center;
+  align-items: start;
+  grid-column: 5 / 6;
+  grid-row: 2 / 3;
+  grid-gap: 25px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.game_score {
+  grid-column: 8 / 9;
+  grid-row: 1 / 2; 
+}
+.game_exit {
+  grid-column: 1 / 3;
+  grid-row: 3 / 4; 
+}
+svg.score-ribbon {
+  z-index: 1;
+}
+svg.reuse-bomb {
+  align-self: flex-start;
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
+  z-index: 2;
+  margin: 3px 0px 0px 20px;
+  filter: drop-shadow(0px 0px 16px #bf1900);
+}
+
+.cell {
+
+  &.one, &.four, &.seven {
+    grid-column: 1 / 2;
+  }
+  &.two, &.five, &.eight {
+    grid-column: 2 / 3;
+  }
+  &.three, &.six, &.nine{
+    grid-column: 3 / 4;
+  }
+  &.one, &.two, &.three {
+    grid-row: 1 / 2;
+  }
+  &.four, &.five, &.six {
+    grid-row: 2 / 3;
+  }
+  &.seven, &.eight, &.nine {
+    grid-row: 3 / 4;
+  }
 }
 
 p {
   margin: 2rem;
 }
 
-button {
-  padding: 0.7rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  background-color: black;
-  color: white;
-  outline: none;
-  border-radius: 5px;
-}
-
-button:hover {
-  background-color: white;
-  color: black;
-}
 
 footer {
   background-color: gray;
@@ -47,22 +115,68 @@ footer {
   margin: 2rem;
 }
 
-.reuse-btn {
-  padding: 0.7rem;
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  background-color: magenta;
+
+.reuse-btn, .reuse-cell, .btn-exit {
+  border-radius: 20px;
+  border: 0px;
+  font-family: "Happy Monkey", system-ui;  
+  border-bottom: 7px solid #AC439B;
+  background: linear-gradient(180deg, #FFEF9B 0%, #FF83EB 100%);
+  box-shadow: 0px 0px 0px 3px #000;
+  font-size: 28px;
   color: white;
-  outline: none;
-  border-radius: 5px;
+  outline: none; 
 }
 
-.reuse-btn:hover {
-  background-color: white;
-  color: magenta;
+.reuse-btn {
+  min-width: 420px;
+  min-height: 100px;
+  
+}
+.reuse-cell {
+  min-width: 160px;
+  min-height: 160px;
+}
+.btn-exit {
+  min-width: 230px;
+  min-height: 90px;
+  
 }
 
+
+
+
+
+.reuse-btn:hover, .reuse-cell:hover, .reuse-bomb:hover, .btn-exit:hover, text.ribbon-font:hover {
+  transition: 0.5s;
+}
+text.ribbon-font:hover {
+  text-shadow: 0px 4px 4px rgb(0 0 0 / 50%);
+
+  t-span:hover {
+  fill: rgba(255, 251, 205, 0.80);  
+  }
+}
+
+.reuse-btn:hover, .reuse-cell:hover, .btn-exit:hover {
+  transform: translateY(-4px);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.30));
+}
+.reuse-bomb:hover {
+transform: translateY(-2px);
+filter: drop-shadow(0px 0px 16px #bf1900);
+}
+.reuse-btn:active, .reuse-cell:active, .btn-exit:active, .reuse-btn:focus, .reuse-cell:focus, .reuse-bomb:focus, .btn-exit:focus {
+  border-bottom-color: #a23d91;
+  background: linear-gradient(180deg, #d3c375 0%, #d76dc6 100%);
+}
+.reuse-btn:active, .reuse-cell:active, .reuse-bomb:active, .btn-exit:active {
+  transform: translateY(2px);
+  transition: 0.3s;
+}
+.reuse-btn:focus, .reuse-cell:focus, .reuse-bomb:focus, .btn-exit:focus {
+  transform: translateY(2px);
+}
 .name {
   color: purple;
 }
