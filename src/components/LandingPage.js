@@ -6,7 +6,7 @@ import "./LandingPage.css"
 
 const LandingPage =() => {
   const handleStartGame = () => {   //HandlestartGame logic is added here, was sourced from YT.
-    window.location.href="/GameLogicPage";      
+    //window.location.href="/";      // This will have the path for gamlogic page. Should be linked after merging the branches
      
   };
 
