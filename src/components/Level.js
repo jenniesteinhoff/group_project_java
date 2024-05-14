@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReUsablePopup from "./ReusablePopup";
 import ScoreRibbon from "./Score";
-import ButtonExit from "./ExitLevel";
+import ButtonExitLevel from "./ExitLevel";
 import Mine from "./MineCell";
 import { isDisabled } from "@testing-library/user-event/dist/utils";
 
@@ -84,7 +84,7 @@ const Level = () => {
             {count === 8 ? <ReUsablePopup result={"You win!"} resultText={"Do you want to try again?"} reset={<button className="popup-btn one" 
             onClick={() => initiateGame() }>Re-start</button>} menu={<button className="popup-btn two" onClick={() => initiateGame() }>Menu</button>}/> : ''}
 
-            <div className="game_exit"><ButtonExit className="btn-exit" label="Exit" onClick={() => initiateGame() } /></div>
+            <div className="game_exit"><ButtonExitLevel className="btn-exit" label="Exit" onClick={() => initiateGame() } /></div>
 
             <div className="game_score"><ScoreRibbon className="score-ribbon" label={count} /></div>
         </div>
