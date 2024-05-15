@@ -8,7 +8,7 @@ const LandingPage = () => {
 
   return (
     //Creating a simple container for now, will be styled later. 
-    <div className="container">
+    <div id="landingpage-container">
       <h1>Welcome to the Minesweeper game</h1>
       <div className="box">
         <nav>
