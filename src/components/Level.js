@@ -11,7 +11,6 @@ const Level = () => {
     const [boxes, setBoxes] = useState([]);
     const [minePressed, setMinePressed] = useState([]);
     const [count, setCount] = useState([]);
-    const [isClicked, setIsClicked] = useState([]);
 
     useEffect(() => {
         initiateGame();
@@ -26,21 +25,17 @@ const Level = () => {
         initialBoxes[mineIndex].mine = true;
         setBoxes(initialBoxes);
         setMinePressed(false);
-        setIsClicked(false)
-        setCount(0)
+        setCount(0);
     };
 
 
     const handleClick = (index) => {
+        console.log(boxes);
         if (!minePressed) {
             const newBoxes = [...boxes];
             newBoxes[index].revealed = true;
 
             setBoxes(newBoxes);
-
-            if (newBoxes[index].revealed) {
-                setIsClicked(true);
-            }
 
             if (newBoxes[index].mine) {
                 setMinePressed(true);
@@ -49,10 +44,14 @@ const Level = () => {
     };
 
 
-    const ReUsableCell = (number) => {
+    const ReUsableCell = (args) => {
+        const box = args.box;
         return (
-            <button className="reuse-cell" disabled={isClicked} onClick={() => setCount(count + 1)}>?</button>
-
+            <button className="reuse-cell"
+                style={{ opacity: box.revealed ? 0.33 : 1 }}
+                onClick={() => box.revealed ? undefined : setCount(count + 1)}>
+                {box.revealed ? '-' : '?'}
+            </button>
         );
     };
 
@@ -70,9 +69,9 @@ const Level = () => {
 
                 {boxes.map((box, index) => (
 
-                    <div key={index} className={'cell ' + numberToWords(index)} onClick={() => handleClick(index) & setIsClicked(index)} >
+                    <div key={index} className={'cell ' + numberToWords(index)} onClick={() => handleClick(index)} >
 
-                        {(box.revealed && box.mine) ? (<Mine />) : <ReUsableCell />}
+                        {(box.revealed && box.mine) ? (<Mine />) : <ReUsableCell box={box} />}
                         {box.revealed ? box.mine ? '' : '' : ''}
                     </div>
 
