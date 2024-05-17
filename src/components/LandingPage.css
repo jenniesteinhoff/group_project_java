@@ -2,7 +2,6 @@
 
 #landingpage-container {
 
-    padding: 20px;
     max-width: 500px;
     margin-top: 50px;
    }
@@ -13,16 +12,18 @@
     margin-bottom: 20px;
  
   }
+  h2 {
+    line-height: 40px;
+  }
   .box {
     border: 2px solid #000;
-    border-radius: 20px;
     padding: 10px;
     margin: 10px;
     display: flex; /* Enable Flexbox */
     flex-direction: column; /* Arrange items vertically */
     justify-content: center; /* Center items vertically */
     align-items: center; /* Center items horizontally */
-      }
+  }
   
   .row {
      margin:auto;
@@ -32,22 +33,42 @@
   
   .reuse-btn {
     background: linear-gradient(to bottom, rgb(241, 241, 117) 20%, magenta 80%);
-    font-family: "Pixelify Sans", sans-serif;
-    padding: 0.7rem;
-    margin-bottom: 2rem;
     font-size: 1.5rem;
     font-weight: 700;
+    padding: 0.7rem;
+    margin: 1rem;
     color: white;
-    outline: none;
     border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(87, 8, 80, 0.884);    
+    font-family: "Pixelify Sans", sans-serif;
+    outline: none;
     cursor: pointer;
-    box-shadow: 0px 4px 6px rgba(87, 8, 80, 0.884);
-      }
+    }
 
   .reuse-btn:hover 
   {
     background-color: magenta;
     color: rgb(226, 158, 226);
+  }
+
+  .box, #exit-container {
+    border: 2px solid #000;
+    border-radius: 20px;
+    
+  }
+
+  #exit-container, #landingpage-container {
+    transform: translateY(-100px);
+    padding: 20px;    
+  }
+
+  #exit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: max-content;
+    margin: 30px;
+    background: linear-gradient(to bottom, rgb(247, 247, 175) 30%, rgb(248, 165, 248) 70%); 
   }
   
   

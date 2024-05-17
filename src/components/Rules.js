@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 
 const Rules = () => {
   return (
-    <div>
-
       <div className="rulesbox">
         <div className="rulescontainer">
           <h2>Rules</h2>
@@ -20,10 +18,9 @@ const Rules = () => {
           <p>Happy Playing!</p>
         </div>
         <Link to="/">
-          <button>Go back!</button>
+          <button className="reuse-btn">Go back!</button>
         </Link>
       </div>
-    </div>
   );
 };
 

@@ -10,9 +10,7 @@ const LandingPage = () => {
     //Creating a simple container for now, will be styled later. 
     <div id="landingpage-container">
       <h1>Welcome to the Minesweeper game</h1>
-      <div className="box">
-        <nav>
-
+        <nav className="box">
           <div className="row">
             <Link to="/level">
               <ReusableButton label="Start the game" />
@@ -31,9 +29,6 @@ const LandingPage = () => {
             </Link>
           </div>
         </nav>
-
-      </div>
-
     </div>
   );
 };
