@@ -15,20 +15,18 @@ body {
   font-size: 1.2rem;
   font-weight: 400;
 }
-.container, .menuOptions {
-  display: flex;
-  align-items: flex-start;
+
+.container, .lvlStructure {
+  height: 100vh;
+  width: -webkit-fill-available;  
 }
 
 .container {
+  display: flex;
+  align-items: center;  
   flex-direction: row;
   justify-content: center;
-}
 
-.menuOptions {
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 2rem;  
 }
 
 .lvlStructure {
@@ -37,8 +35,6 @@ body {
   align-items: center;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  height: 100vh;
-  width: -webkit-fill-available;
 }
 .gameBoard {
   display: grid;
@@ -56,7 +52,7 @@ body {
     opacity: 0;
     transform: translateY(70px);
   }
-  50% {
+  25% {
     opacity: 0;
   }
   100% {
@@ -177,6 +173,10 @@ p {
   margin: 2rem;
 }
 
+a {
+  text-decoration: none;
+  color: #000;
+}
 .reuse-cell, .exit-btn, text.ribbon-font {
   color: #3c144a;
   text-align: center;
@@ -214,7 +214,7 @@ text.ribbon-font {
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.20);
 }
 
-.mine-cell, .pressed-reuse-cell {
+.mine-cell {
   color: #ffffff00;
   border-bottom: 7px solid #C165B4;
   background: linear-gradient(180deg, #fff7bb 0%, #ffbaf6 100%);
@@ -239,24 +239,22 @@ text.ribbon-font {
   transition: 0s;
 }
 
-.reuse-cell:hover, .mine-cell:hover, .pressed-reuse-cell:hover, 
-svg.mine:hover, .exit-btn:hover, text.ribbon-font:hover, .popup-btn:hover {
+.reuse-cell:hover, .mine-cell:hover, svg.mine:hover, 
+.exit-btn:hover, text.ribbon-font:hover, .popup-btn:hover {
   transition: 1.0s cubic-bezier(0, 0, 0.2, 1);
 }
 
-.reuse-cell:active, .mine-cell:active, .pressed-reuse-cell:active, 
-svg.mine:active, .exit-btn:active {
+.reuse-cell:active, .mine-cell:active, svg.mine:active, .exit-btn:active {
   transition: 0.4s cubic-bezier(0, 0, 0.2, 1);
 }
 
-.reuse-cell:focus, .pressed-reuse-cell:focus, .mine-cell:focus, .exit-btn:focus, 
-.popup-btn:focus {
+.reuse-cell:focus, .mine-cell:focus, .exit-btn:focus, .popup-btn:focus {
   filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0));
   transform: translateY(0px);
   transition: 0.6s cubic-bezier(0, 0, 0.2, 1);
 }
 
-.reuse-cell:focus, .pressed-reuse-cell:focus, .mine-cell:focus {
+.reuse-cell:focus, .mine-cell:focus {
   border-bottom: 7px solid #C165B4;
   background: linear-gradient(180deg, #fff7bb 0%, #ffbaf6 100%);
 }
@@ -267,21 +265,20 @@ svg.mine:active, .exit-btn:active {
   filter: none;
 }
 
-
 .popup-btn:hover {
   background: #66aad9;
   box-shadow: 0px 0px 12px 11px rgb(53 101 136 / 40%) inset;
 }
 
-.reuse-cell:hover, .pressed-reuse-cell:hover, .exit-btn:hover, .mine-cell:hover {
+.reuse-cell:hover, .exit-btn:hover, .mine-cell:hover {
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.30));
 }
 
-.reuse-cell:active, .pressed-reuse-cell:active, .mine-cell:active, .exit-btn:active, .popup-btn:active {
+.reuse-cell:active, .mine-cell:active, .exit-btn:active, .popup-btn:active {
   transform: translateY(4px);
 }
 
-.reuse-cell:active, .pressed-reuse-cell:active, .mine-cell:active, .exit-btn:active, .exit-btn:focus {
+.reuse-cell:active, .mine-cell:active, .exit-btn:active {
   border-bottom-color: #a23d91;
   background: linear-gradient(180deg, #d3c375 0%, #d76dc6 100%);
 }
@@ -292,9 +289,6 @@ text.ribbon-font:hover{
   tspan {
     fill: rgba(255, 251, 205, 0.80);  
   }
-}
-.name {
-  color: purple;
 }
 
 @media screen and (max-width: 1221px){

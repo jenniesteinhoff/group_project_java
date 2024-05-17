@@ -3,7 +3,6 @@ import ReUsablePopup from "./ReusablePopup";
 import ScoreRibbon from "./Score";
 import ButtonExitLevel from "./ExitLevel";
 import Mine from "./MineCell";
-import { isDisabled } from "@testing-library/user-event/dist/utils";
 import { Link } from "react-router-dom";
 
 const Level = () => {
@@ -48,7 +47,7 @@ const Level = () => {
         const box = args.box;
         return (
             <button className="reuse-cell"
-                style={{ opacity: box.revealed ? 0.33 : 1 }}
+                style={{ opacity: box.revealed ? 0.33 : 1, pointerEvents: box.revealed ? "none" : '', pointerEvents: count === 8 && minePressed==(false) ? "none" : '', pointerEvents: minePressed ? "none" : ''}}
                 onClick={() => box.revealed ? undefined : setCount(count + 1)}>
                 {box.revealed ? '-' : '?'}
             </button>
@@ -77,12 +76,12 @@ const Level = () => {
 
                 ))}
             </div>
-
+            
             {minePressed ? <ReUsablePopup result={"You lose"} resultText={"Better luck next time!"} reset={<button className="popup-btn one"
-                onClick={() => initiateGame()}>Re-start</button>} menu={<button className="popup-btn two" onClick={() => initiateGame()}>Menu</button>} /> : ''}
+                onClick={() => initiateGame()}>Re-start</button>} menu={<button className="popup-btn two" onClick={() => initiateGame()}><Link to="/">Menu</Link></button>} /> : ''}
 
-            {count === 8 ? <ReUsablePopup result={"You win!"} resultText={"Do you want to try again?"} reset={<button className="popup-btn one"
-                onClick={() => initiateGame()}>Re-start</button>} menu={<button className="popup-btn two" onClick={() => initiateGame()}>Menu</button>} /> : ''}
+            {count === 8 && minePressed==(false) ? <ReUsablePopup result={"You win!"} resultText={"Do you want to try again?"} reset={<button className="popup-btn one"
+                onClick={() => initiateGame()}>Re-start</button>} menu={<button className="popup-btn two" onClick={() => initiateGame()}><Link to="/">Menu</Link></button>} /> : ''}
 
             <div className="game_exit">
                 <ButtonExitLevel className="btn-exit" label="Restart" onClick={() => initiateGame()} />
