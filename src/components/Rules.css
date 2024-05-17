@@ -3,11 +3,12 @@
     border: 2px solid #000;
     border-radius: 20px;
     padding: 20px; 
-    margin: 0 auto;
+    margin: 40px 20px 20px 20px;
     display: flex; 
     flex-direction: column;    
-     align-items: center;
+    align-items: center;
     background: linear-gradient(to bottom, rgb(247, 247, 175) 30%, rgb(248, 165, 248) 70%);
+    transform: translateY(-60px);
 }
   .rulescontainer {
     margin: 0 auto;
@@ -20,8 +21,9 @@
 
     h1 {
       font-size: 28px;
-      text-align: center;
       margin-bottom: 20px;
    
     }
-   
+    h1, h2 {
+      text-align: center;  
+    }

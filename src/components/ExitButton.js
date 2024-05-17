@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import "./LandingPage.css"
 
 const ExitButton = () => {
   return (
-    <div>
-      <h2>Thank you for playing! You can now close the window.</h2>
+    <div id="exit-container">
+      <h2>Thank you for playing!<br/>You can now close the window.</h2>
     </div>
   );
 }
