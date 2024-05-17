@@ -7,30 +7,32 @@ import { Link } from "react-router-dom";
 
 const Level = () => {
 
+
+    const numberOfBoxes = 9;
     const [boxes, setBoxes] = useState([]);
     const [minePressed, setMinePressed] = useState([]);
+    const [gameCompleted, setGameCompleted] = useState([]);
     const [count, setCount] = useState([]);
 
     useEffect(() => {
         initiateGame();
-
-
     }, []);
 
     const initiateGame = () => {
-        const numberOfBoxes = 9;
         const initialBoxes = Array(numberOfBoxes).fill().map(() => ({ revealed: false, mine: false }));
         const mineIndex = Math.floor(Math.random() * numberOfBoxes);
         initialBoxes[mineIndex].mine = true;
         setBoxes(initialBoxes);
         setMinePressed(false);
         setCount(0);
+        setGameCompleted(false);
     };
 
 
     const handleClick = (index) => {
+        // Log for development and testing purposes otherwise should be removed.
         console.log(boxes);
-        if (!minePressed) {
+        if (!minePressed && !gameCompleted && !boxes[index].revealed) {
             const newBoxes = [...boxes];
             newBoxes[index].revealed = true;
 
@@ -38,6 +40,13 @@ const Level = () => {
 
             if (newBoxes[index].mine) {
                 setMinePressed(true);
+                setGameCompleted(true);
+            } else {
+                setCount(count + 1);
+            }
+
+            if (newBoxes.filter((box) => box.revealed).length == numberOfBoxes - 1) {
+                setGameCompleted(true);
             }
         }
     };
@@ -45,13 +54,19 @@ const Level = () => {
 
     const ReUsableCell = (args) => {
         const box = args.box;
-        return (
-            <button className="reuse-cell"
-                style={{ opacity: box.revealed ? 0.33 : 1, pointerEvents: box.revealed ? "none" : '', pointerEvents: count === 8 && minePressed==(false) ? "none" : '', pointerEvents: minePressed ? "none" : ''}}
-                onClick={() => box.revealed ? undefined : setCount(count + 1)}>
+        const boxBlocked = box.revealed || gameCompleted;
+
+        if (box.revealed && box.mine) {
+            return <Mine />;
+        } else {
+            return <button className="reuse-cell"
+                style={{
+                    opacity: boxBlocked ? 0.33 : 1,
+                    pointerEvents: boxBlocked ? "none" : ''
+                }}>
                 {box.revealed ? '-' : '?'}
-            </button>
-        );
+            </button>;
+        }
     };
 
 
@@ -63,25 +78,22 @@ const Level = () => {
     return (
         <div className="lvlStructure">
 
-
             <div className="gameBoard">
-
                 {boxes.map((box, index) => (
-
                     <div key={index} className={'cell ' + numberToWords(index)} onClick={() => handleClick(index)} >
-
-                        {(box.revealed && box.mine) ? (<Mine />) : <ReUsableCell box={box} />}
-                        {box.revealed ? box.mine ? '' : '' : ''}
+                        <ReUsableCell box={box} />
                     </div>
-
                 ))}
             </div>
-            
-            {minePressed ? <ReUsablePopup result={"You lose"} resultText={"Better luck next time!"} reset={<button className="popup-btn one"
-                onClick={() => initiateGame()}>Re-start</button>} menu={<button className="popup-btn two" onClick={() => initiateGame()}><Link to="/">Menu</Link></button>} /> : ''}
 
-            {count === 8 && minePressed==(false) ? <ReUsablePopup result={"You win!"} resultText={"Do you want to try again?"} reset={<button className="popup-btn one"
-                onClick={() => initiateGame()}>Re-start</button>} menu={<button className="popup-btn two" onClick={() => initiateGame()}><Link to="/">Menu</Link></button>} /> : ''}
+            {gameCompleted ?
+                <ReUsablePopup
+                    result={minePressed ? "You lose!" : "You win!"}
+                    resultText={minePressed ? "Better luck next time!" : "Do you want to try again?"}
+                    reset={<button className="popup-btn one" onClick={() => initiateGame()}>Re-start</button>}
+                    menu={<button className="popup-btn two"><Link to="/">Menu</Link></button>
+                    } /> : ''
+            }
 
             <div className="game_exit">
                 <ButtonExitLevel className="btn-exit" label="Restart" onClick={() => initiateGame()} />
@@ -90,7 +102,9 @@ const Level = () => {
                 </Link>
             </div>
 
-            <div className="game_score"><ScoreRibbon className="score-ribbon" label={count} /></div>
+            <div className="game_score">
+                <ScoreRibbon className="score-ribbon" label={count} />
+            </div>
         </div>
     );
 
