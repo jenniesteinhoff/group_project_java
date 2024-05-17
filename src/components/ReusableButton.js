@@ -1,5 +1,5 @@
 const ReusableButton = ({ label, onClick }) => {
-    return <button onClick={onClick}>{label}</button>;
+    return <button className="reuse-btn" onClick={onClick}>{label}</button>;
   };
   
   export default ReusableButton;

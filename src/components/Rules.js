@@ -1,13 +1,11 @@
 import "./Rules.css"
+import { Link } from "react-router-dom";
 
 
 const Rules = () => {
-  const handleGoBack = () => {
-    window.history.back(); // Navigate to the previous page
-  };
-    return (
+  return (
     <div>
-      
+
       <div className="rulesbox">
         <div className="rulescontainer">
           <h2>Rules</h2>
@@ -21,7 +19,9 @@ const Rules = () => {
           </p>
           <p>Happy Playing!</p>
         </div>
-        <button onClick={handleGoBack}>Go back!</button>
+        <Link to="/">
+          <button>Go back!</button>
+        </Link>
       </div>
     </div>
   );
